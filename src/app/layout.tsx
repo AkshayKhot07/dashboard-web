@@ -13,10 +13,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      className="font-sans"
-      >
-        {children}
+      <body className="!font-dm-sans">
+        <div className="min-h-screen">{children}</div>
       </body>
     </html>
   );

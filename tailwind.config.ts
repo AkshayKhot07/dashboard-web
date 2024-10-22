@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "dm-sans":["'DM Sans'", "sans-serif"]
+
+      },
+
+
       colors: {
         background: {
           100: "#FFFFFF",
@@ -17,12 +23,16 @@ const config: Config = {
         text: {
           100:"#2B3674",
           200:"#707EAE",
-          300:"#8F9BBA"
+          300:"#8F9BBA",
+          400:"#9AA8D1"
         },
           purple: {
             100:"#4434DD",
             200:"#8076EE"
-          }
+          },
+          blue: {
+            100: "#2B3674"
+          },
       },
 
       boxShadow: {
