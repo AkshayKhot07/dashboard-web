@@ -1,6 +1,9 @@
 import { daysList } from "@/constants/data";
+import useUserList from "@/hooks/useUserList";
 
 const SortByDays = () => {
+    const { sortFilterState, sortFilterDispatch } = useUserList();
+
   return (
     <div className="flex justify-between">
       <div></div>
@@ -12,13 +15,13 @@ const SortByDays = () => {
           style={{
             textTransform: "capitalize",
           }}
-          //   value={sortFilterState.bySize}
-          //   onChange={(e) => {
-          //     sortFilterDispatch({
-          //       type: "FILTER_BY_SIZE",
-          //       payload: e.target.value,
-          //     });
-          //   }}
+            value={sortFilterState.byDays}
+            onChange={(e) => {
+              sortFilterDispatch({
+                type: "FILTER_BY_DAYS",
+                payload: e.target.value,
+              });
+            }}
         >
           <option value="" disabled>
             Select Days

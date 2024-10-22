@@ -23,11 +23,64 @@ export interface userListingDummyDataTypes {
   };
 }
 
+// Get today's date
+const today = new Date();
+
+// Helper function to format date as "DD MMM, YYYY"
+const formatDate = (date: Date) => {
+  const options: Intl.DateTimeFormatOptions = { 
+    day: '2-digit', 
+    month: 'short', 
+    year: 'numeric' 
+  };
+  return date.toLocaleDateString('en-GB', options);
+};
+
+// Function to get a random date based on the specified input days
+const getRandomDateFromLastDays = (inputDays: number): string => {
+  const today = new Date();
+
+  let startDate: Date;
+  let endDate: Date;
+
+  // Determine the date range based on inputDays
+  if (inputDays === 7) {
+    // Last 7 days
+    startDate = new Date(today);
+    startDate.setDate(today.getDate() - 7);
+    endDate = today;
+  } else if (inputDays === 15) {
+    // Last 15 days, neglecting the last 7 days
+    startDate = new Date(today);
+    startDate.setDate(today.getDate() - 15);
+    endDate = new Date(today);
+    endDate.setDate(endDate.getDate() - 7);
+  } else if (inputDays === 30) {
+    // Last 30 days, neglecting the last 15 days
+    startDate = new Date(today);
+    startDate.setDate(today.getDate() - 30);
+    endDate = new Date(today);
+    endDate.setDate(endDate.getDate() - 15);
+  } else {
+    throw new Error("Invalid input days. Only 7, 15, or 30 are allowed.");
+  }
+
+  // Generate a random date between startDate and endDate
+  const randomTime = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime());
+  const randomDate = new Date(randomTime);
+
+  // Format and return the random date as "DD MMM, YYYY"
+  return formatDate(randomDate);
+};
+
+
+
+
 export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_1,
     name: "Jane Doe",
-    date: "31 Jan, 2024",
+    date: '22 Oct, 2024',
     email: "janedoe@example.com",
     source: "direct",
     type: "user",
@@ -55,7 +108,7 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_2,
     name: "John Smith",
-    date: "15 Feb, 2024",
+    date: '15 Oct, 2024', // last 15 days
     email: "johnsmith@example.com",
     source: "referral",
     type: "admin",
@@ -83,7 +136,7 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_3,
     name: "Alice Johnson",
-    date: "10 Mar, 2024",
+    date: '4 Oct, 2024', // last 30 days
     email: "alicej@example.com",
     source: "social media",
     type: "user",
@@ -111,7 +164,7 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_4,
     name: "Michael Lee",
-    date: "28 Feb, 2024",
+    date: '21 Oct, 2024', // last 7 days
     email: "mlee@example.com",
     source: "email campaign",
     type: "user",
@@ -139,7 +192,7 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_5,
     name: "Emily Davis",
-    date: "20 Mar, 2024",
+    date: '14 Oct, 2024', // last 15 days
     email: "edavis@example.com",
     source: "direct",
     type: "admin",
@@ -167,7 +220,7 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_6,
     name: "Sophia Martinez",
-    date: "02 Apr, 2024",
+    date: '5 Oct, 2024', // last 30 days
     email: "smartinez@example.com",
     source: "referral",
     type: "user",
@@ -192,10 +245,11 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
       notReceived: 40,
     },
   },
+
   {
     image: USERIMAGE_7,
     name: "David Wilson",
-    date: "12 Apr, 2024",
+    date: '20 Oct, 2024', // last 7 days
     email: "dwilson@example.com",
     source: "social media",
     type: "user",
@@ -223,7 +277,7 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_8,
     name: "Oliver Brown",
-    date: "01 May, 2024",
+    date: '13 Oct, 2024', // last 15 days
     email: "obrown@example.com",
     source: "direct",
     type: "admin",
@@ -251,7 +305,7 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
   {
     image: USERIMAGE_9,
     name: "Lily White",
-    date: "15 May, 2024",
+    date: '6 Oct, 2024', // last 30 days
     email: "lwhite@example.com",
     source: "email campaign",
     type: "user",
@@ -275,11 +329,11 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
       received: 270,
       notReceived: 20,
     },
-  }, 
+  },
   {
     image: USERIMAGE_10,
     name: "Grace Hall",
-    date: "10 Jun, 2024",
+    date: '19 Oct, 2024', // last 7 days
     email: "ghall@example.com",
     source: "social media",
     type: "user",
@@ -304,6 +358,8 @@ export const userListingDummyData: userListingDummyDataTypes[] = [
       notReceived: 35,
     },
   }
+
 ];
 
-export const daysList: string[] = ["7", "15", "30"];
+
+export const daysList: number[] = [7, 15, 30, 100];
