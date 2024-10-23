@@ -50,7 +50,7 @@ const UserListingTable = () => {
     });
   };
 
-  console.log("sortedKey", sortedKey);
+
 
   useEffect(() => {
     if (sortFilterState.bySort.key === "") {

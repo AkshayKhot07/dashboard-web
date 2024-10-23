@@ -11,6 +11,7 @@ export type SortFilterAction =
   | { type: "SORT_BY"; payload: { key: string; order: string } }
   | { type: "FILTER_BY_SEARCH"; payload: string }
   | { type: "FILTER_BY_DAYS"; payload: string }
+  | { type: "INIT_STATE"; payload: SortFilterState }
   | { type: "CLEAR_FILTERS" };
 
 

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 
-const ProgressBar = ({ value = 0 }) => {
+const ProgressBar = ({ value = 0 }: { value: number }) => {
   const barRef = useRef(null);
   const valueRef = useRef(null);
 
@@ -19,11 +19,11 @@ const ProgressBar = ({ value = 0 }) => {
         return;
       }
       p++;
-      bar.style.transform = `rotate(${45 + p * 1.8}deg)`; // Rotate based on percentage
-      val.textContent = p | 0; // Update text content
+      (bar as any).style.transform = `rotate(${45 + p * 1.8}deg)`;
+      (val as any).textContent = p | 0;
     }, stepTime);
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
+    return () => clearInterval(interval);
   }, [value]);
 
   return (
@@ -40,7 +40,7 @@ const ProgressBar = ({ value = 0 }) => {
                 ></div>
               </div>
               <div className="text-background-100 font-semibold text-base">
-                <span ref={valueRef}>{value}</span>%
+                <span ref={valueRef}>{Math.ceil(value)}</span>%
               </div>
             </div>
           </div>
@@ -48,11 +48,6 @@ const ProgressBar = ({ value = 0 }) => {
       </section>
     </div>
   );
-};
-
-// Prop validation
-ProgressBar.propTypes = {
-  value: PropTypes.number,
 };
 
 export default ProgressBar;

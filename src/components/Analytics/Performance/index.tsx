@@ -13,7 +13,7 @@ const Performance = ({
   modifiedUsers: userListingDummyDataTypes[];
   className?: string;
 }) => {
-  console.log("Performance modifiedUsers", modifiedUsers);
+
 
   const totalPerformanceValues = useMemo(() => {
     const { totalPositiveNumber, totalNegativeNumber } = modifiedUsers.reduce(
@@ -36,7 +36,7 @@ const Performance = ({
     return { totalPositiveNumber, totalNegativeNumber, positivePercentage };
   }, [modifiedUsers]);
 
-  console.log("totalPerformanceValues", totalPerformanceValues);
+
 
   return (
     <div className={classNames(className, "w-full bg-background-200 flex justify-center")}>
@@ -46,7 +46,7 @@ const Performance = ({
         </p>
         <div className="flex gap-2 items-center">
           <div>
-            <ProgressBar value={totalPerformanceValues.positivePercentage} />
+            <ProgressBar value={totalPerformanceValues?.positivePercentage} />
           </div>
           <div>
             <div>

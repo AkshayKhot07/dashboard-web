@@ -69,7 +69,7 @@ const MessageComp = ({
       </div>
 
       <div className="flex gap-3 divide-x-2 pt-2">
-        <p className="flex gap-1 items-center w-[52px]">
+        <div className="flex gap-1 items-center w-[52px]">
           <span>
             <UpIcon />
           </span>
@@ -78,8 +78,8 @@ const MessageComp = ({
             initialValue={0}
             targetValue={totalChatsValues.totalSentChats}
           />
-        </p>
-        <p className="flex gap-1 items-center  w-[66px]">
+        </div>
+        <div className="flex gap-1 items-center  w-[66px]">
           <span className="ml-1 md:ml-3">
             <DownIcon />
           </span>
@@ -88,8 +88,8 @@ const MessageComp = ({
             initialValue={0}
             targetValue={totalChatsValues.totalReceivedChats}
           />
-        </p>
-        <p className="flex gap-1 items-center">
+        </div>
+        <div className="flex gap-1 items-center">
           <span className="ml-1 md:ml-3">
             <MissedMsgIcon />
           </span>
@@ -98,7 +98,7 @@ const MessageComp = ({
             initialValue={0}
             targetValue={totalChatsValues.totalNotReceivedChats}
           />
-        </p>
+        </div>
       </div>
     </div>
     </div>

@@ -29,20 +29,29 @@ const UserListContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const initialSortFilterState = getLocalStorage("sortFilterState") || {
+  const initialSortFilterState: SortFilterState = {
     bySort: {
       key: "",
       order: "",
     },
     searchQuery: "",
-    byType: "",
-    bySize: "",
+    byDays: "",
   };
 
   const [sortFilterState, sortFilterDispatch] = useReducer(
     sortFilterReducer,
     initialSortFilterState
   );
+
+  useEffect(() => {
+    const savedSortFilterState = getLocalStorage("sortFilterState");
+    if (savedSortFilterState) {
+      sortFilterDispatch({
+        type: "INIT_STATE",
+        payload: savedSortFilterState,
+      });
+    }
+  }, []);
 
   // Effect to persist sortFilterState to localStorage
   useEffect(() => {

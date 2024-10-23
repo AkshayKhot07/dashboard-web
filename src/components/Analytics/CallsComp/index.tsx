@@ -39,7 +39,6 @@ const CallsComp = ({
     };
   }, [modifiedUsers]);
 
-  console.log("totalCallsValues", totalCallsValues)
 
   return (
     <div className="w-full bg-background-200 flex justify-center">
@@ -48,7 +47,6 @@ const CallsComp = ({
       <div className="flex gap-2 justify-between items-center">
         <div className="flex-[2]">
           <div className="flex gap-2">
-            {/* <p className="font-bold text-2xl text-text-100">5687</p> */}
             <AnimatedCounter
               className="!font-bold !text-2xl !text-text-100"
               initialValue={0}
@@ -69,7 +67,7 @@ const CallsComp = ({
       </div>
 
       <div className="flex gap-3 divide-x-2 pt-2">
-        <p className="flex gap-1 items-center w-[52px]">
+        <div className="flex gap-1 items-center w-[52px]">
           <span>
             <UpIcon />
           </span>
@@ -78,8 +76,8 @@ const CallsComp = ({
             initialValue={0}
             targetValue={totalCallsValues.totalIncomingNumber}
           />
-        </p>
-        <p className="flex gap-1 items-center w-[66px]">
+        </div>
+        <div className="flex gap-1 items-center w-[66px]">
           <span className="ml-3">
             <DownIcon />
           </span>
@@ -88,8 +86,8 @@ const CallsComp = ({
             initialValue={0}
             targetValue={totalCallsValues.totalOutingNumber}
           />
-        </p>
-        <p className="flex gap-1 items-center">
+        </div>
+        <div className="flex gap-1 items-center">
           <span className="ml-3">
             <MissedCallIcon />
           </span>
@@ -98,7 +96,7 @@ const CallsComp = ({
             initialValue={0}
             targetValue={totalCallsValues.totalMissedNumber}
           />
-        </p>
+        </div>
       </div>
     </div>
     </div>

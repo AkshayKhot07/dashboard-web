@@ -34,7 +34,6 @@ const InvitesComp = ({
       <div className="flex gap-2 justify-between items-center">
         <div className="flex-[2]">
           <div className="flex gap-2">
-            {/* <p className="font-bold text-2xl text-text-100">5687</p> */}
             <AnimatedCounter
               className="!font-bold !text-2xl !text-text-100"
               initialValue={0}
@@ -55,20 +54,18 @@ const InvitesComp = ({
       </div>
 
       <div className="flex gap-3 divide-x-2 pt-2">
-        <p className="flex gap-2 w-[75px]">
+        <div className="flex gap-2 w-[75px]">
           <span className="text-text-400 text-sm font-medium">Sent: </span>
-          {/* <span className="text-text-100 text-sm font-bold">3257</span> */}
           <AnimatedCounter
             className="!text-text-100 !text-sm !font-bold"
             initialValue={0}
             targetValue={totalInvitesValues.totalSentNumber}
           />
-        </p>
-        <p className="flex gap-2">
+        </div>
+        <div className="flex gap-2">
           <span className="text-text-400 text-sm font-medium ml-3">
             Accepted:{" "}
           </span>
-          {/* <span className="text-text-100 text-sm font-bold">1987</span> */}
           <span>
 
           <AnimatedCounter
@@ -77,7 +74,7 @@ const InvitesComp = ({
             targetValue={totalInvitesValues.totalAcceptedNumber}
             />
             </span>
-        </p>
+        </div>
       </div>
     </div>
     </div>
