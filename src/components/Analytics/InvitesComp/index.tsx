@@ -28,7 +28,8 @@ const InvitesComp = ({
   }, [modifiedUsers]);
 
   return (
-    <div className="p-3 bg-background-100 rounded-md shadow">
+    <div className="w-full bg-background-200 flex justify-center">
+    <div className="p-3 bg-background-100 rounded-md shadow w-[300px]">
       <p className="text-base font-medium text-text-400">Total Invites</p>
       <div className="flex gap-2 justify-between items-center">
         <div className="flex-[2]">
@@ -78,6 +79,7 @@ const InvitesComp = ({
             </span>
         </p>
       </div>
+    </div>
     </div>
   );
 };

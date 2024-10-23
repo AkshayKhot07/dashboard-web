@@ -4,11 +4,14 @@ import { FaArrowDown } from "react-icons/fa";
 import { useMemo } from "react";
 import ProgressBar from "./ProgressBar";
 import AnimatedCounter from "../AnimatedCounter";
+import classNames from "classnames";
 
 const Performance = ({
   modifiedUsers,
+  className,
 }: {
   modifiedUsers: userListingDummyDataTypes[];
+  className?: string;
 }) => {
   console.log("Performance modifiedUsers", modifiedUsers);
 
@@ -36,32 +39,42 @@ const Performance = ({
   console.log("totalPerformanceValues", totalPerformanceValues);
 
   return (
-    <div className="bg-blue-100 p-3  rounded-md shadow">
-      <p className="text-background-100 font-semibold text-base">Performance</p>
-      <div className="flex gap-2 items-center">
-        <div>
-          <ProgressBar value={totalPerformanceValues.positivePercentage} />
-        </div>
-        <div>
+    <div className={classNames(className, "w-full bg-background-200 flex justify-center")}>
+      <div className={classNames("bg-blue-100 p-3  rounded-md shadow w-[300px]")}>
+        <p className="text-background-100 font-semibold text-base">
+          Performance
+        </p>
+        <div className="flex gap-2 items-center">
           <div>
-            <div className="flex gap-1 items-center">
-              <FaArrowUp className="text-green-600" />
-              <p className="font-bold text-sm text-background-100">
-                Positive ratings
-              </p>
-            </div>
-            {/* <p className="font-bold text-2xl text-background-100">1025</p> */}
-            <AnimatedCounter initialValue={0} targetValue={totalPerformanceValues.totalPositiveNumber} />
+            <ProgressBar value={totalPerformanceValues.positivePercentage} />
           </div>
           <div>
-            <div className="flex gap-1 items-center">
-              <FaArrowDown className="text-red-600" />
-              <p className="font-bold text-sm text-background-100">
-                Negative ratings
-              </p>
+            <div>
+              <div className="flex gap-1 items-center">
+                <FaArrowUp className="text-green-600" />
+                <p className="font-bold text-sm text-background-100">
+                  Positive ratings
+                </p>
+              </div>
+              {/* <p className="font-bold text-2xl text-background-100">1025</p> */}
+              <AnimatedCounter
+                initialValue={0}
+                targetValue={totalPerformanceValues.totalPositiveNumber}
+              />
             </div>
-            {/* <p className="font-bold text-2xl text-background-100">1025</p> */}
-            <AnimatedCounter initialValue={0} targetValue={totalPerformanceValues.totalNegativeNumber} />
+            <div>
+              <div className="flex gap-1 items-center">
+                <FaArrowDown className="text-red-600" />
+                <p className="font-bold text-sm text-background-100">
+                  Negative ratings
+                </p>
+              </div>
+              {/* <p className="font-bold text-2xl text-background-100">1025</p> */}
+              <AnimatedCounter
+                initialValue={0}
+                targetValue={totalPerformanceValues.totalNegativeNumber}
+              />
+            </div>
           </div>
         </div>
       </div>
