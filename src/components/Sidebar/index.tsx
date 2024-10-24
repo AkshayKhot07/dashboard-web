@@ -11,8 +11,6 @@ import classNames from "classnames";
 const Sidebar = () => {
   const pathname = usePathname();
 
-
-
   return (
     <div className="box-border">
       <div className="py-10 flex items-center justify-center border-b-2 border-b-background-300">

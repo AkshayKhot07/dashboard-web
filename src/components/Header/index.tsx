@@ -19,9 +19,12 @@ const Header = () => {
           <IoReorderThree className="text-4xl" />
         </button>
 
-        <div className={classNames(toggleNav ? "block" : "hidden",
+        <div
+          className={classNames(
+            toggleNav ? "block" : "hidden",
             "absolute top-[82%] right-0 z-[999]"
-        )}>
+          )}
+        >
           <SidebarMobile setToggleNav={setToggleNav} />
         </div>
       </div>

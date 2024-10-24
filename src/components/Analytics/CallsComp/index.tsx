@@ -1,6 +1,5 @@
 import CallIcon from "@/components/UI/Icons/Svg/CallIcon";
 import DownIcon from "@/components/UI/Icons/Svg/DownIcon";
-import { InvitesIcon } from "@/components/UI/Icons/Svg/Invites";
 import MissedCallIcon from "@/components/UI/Icons/Svg/MissedCallIcon";
 import UpIcon from "@/components/UI/Icons/Svg/UpIcon";
 import { userListingDummyDataTypes } from "@/constants/data";

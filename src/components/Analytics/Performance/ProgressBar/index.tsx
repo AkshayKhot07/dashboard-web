@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 
 const ProgressBar = ({ value = 0 }: { value: number }) => {
-  const barRef = useRef(null);
+  const barRef = useRef<HTMLDivElement | null>(null);
   const valueRef = useRef(null);
 
   useEffect(() => {
@@ -19,7 +18,8 @@ const ProgressBar = ({ value = 0 }: { value: number }) => {
         return;
       }
       p++;
-      (bar as any).style.transform = `rotate(${45 + p * 1.8}deg)`;
+      if(bar)
+      bar.style.transform = `rotate(${45 + p * 1.8}deg)`;
       (val as any).textContent = p | 0;
     }, stepTime);
 

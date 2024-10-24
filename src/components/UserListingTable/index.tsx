@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import TableComponent, { Field, SortOrder } from "../TableComponent";
 import useUserList from "@/hooks/useUserList";
-import { userListingDummyData } from "@/constants/data";
-import TableComponentNew from "../TableComponent/TableComponentNew";
 import useModifiedUsers from "@/hooks/useModifiedUsers";
+import Image from "next/image";
 
 const UserListingTable = () => {
   const { sortFilterState, sortFilterDispatch } = useUserList();
@@ -50,8 +49,6 @@ const UserListingTable = () => {
     });
   };
 
-
-
   useEffect(() => {
     if (sortFilterState.bySort.key === "") {
       setSortedKey({
@@ -69,10 +66,12 @@ const UserListingTable = () => {
       label: "USER NAME",
       render: (_, item) => (
         <div className="flex gap-1 items-center py-5 pl-2">
-          <img
+          <Image
             className="w-[20px] h-[20px] rounded-full"
             src={item.image}
             alt={item.name}
+            width={20}
+            height={20}
           />
           <p className="text-text-100 text-base font-bold">{item.name}</p>
         </div>
@@ -111,7 +110,7 @@ const UserListingTable = () => {
       label: "SOURCE",
       render: (value) => (
         <div>
-          <p className="text-text-200 font-bold text-xs">{value}</p>
+          <p className="text-text-200 font-bold text-xs capitalize">{value}</p>
         </div>
       ),
       headerClass: "!min-w-[130px] !max-w-[130px]",
@@ -123,7 +122,7 @@ const UserListingTable = () => {
       label: "TYPE",
       render: (value) => (
         <div>
-          <p className="text-text-200 font-bold text-xs">{value}</p>
+          <p className="text-text-200 font-bold text-xs capitalize">{value}</p>
         </div>
       ),
       headerClass: "!min-w-[130px] !max-w-[130px]",
@@ -136,17 +135,36 @@ const UserListingTable = () => {
       label: "STATUS",
       render: (value) => (
         <div>
-          <p className="text-text-200 font-bold text-xs">{value}</p>
+          <p className="text-text-200 font-bold text-xs capitalize">{value}</p>
         </div>
       ),
       headerClass: "!min-w-[130px] !max-w-[130px]",
+      align: "left",
+    },
+
+    {
+      key: "",
+      label: "TAGS",
+      render: (_, value) => (
+        <div className="flex gap-1">
+          {value?.tags?.map((item: string) => (
+            <p
+              key={item}
+              className="text-background-100 flex items-center justify-center bg-text-200 px-2 py-1 rounded-xl font-bold text-xs capitalize"
+            >
+              {item}
+            </p>
+          ))}
+        </div>
+      ),
+      headerClass: "!min-w-[130px] !max-w-auto",
       align: "left",
     },
   ];
 
   return (
     <div className="user-listing-table">
-      <TableComponentNew
+      <TableComponent
         isLoading={loading}
         fields={fields}
         columns={modifiedUsers || []}
